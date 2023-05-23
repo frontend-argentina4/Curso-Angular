@@ -1,6 +1,6 @@
-# ArgentinaProgramaCurso
+# HelloAngular
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.0.2.
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.3.1.
 
 ## Development server
 
@@ -25,3 +25,31 @@ Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To u
 ## Further help
 
 To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+
+
+# Develop with docker
+
+## 1 - Crear imagen desarrollo
+
+```shell
+docker build -t hello-angular . -f ./docker/Dockerfile
+```
+
+## 2 - Run
+Linux
+```shell 
+docker run --rm -it -u $(id -u ${USER}):$(id -g ${USER}) --name hello-angular -v ${PWD}:/app -p 4200:4200 hello-angular
+```
+Windows
+```shell 
+docker run --rm -it --name hello-angular -v ${PWD}:/app -p 4200:4200 hello-angular
+```
+
+### Dentro del contenedor correr npm install por primera vez
+```shell 
+npm install
+```
+### Dentro del contenedor correr npm start
+```shell 
+npm start
+```

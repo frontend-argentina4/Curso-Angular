@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "argentina-programa-curso": {
+    "curso-angular": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -13,7 +13,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/argentina-programa-curso",
+            "outputPath": "dist/curso-angular",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": [
@@ -60,10 +60,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "argentina-programa-curso:build:production"
+              "browserTarget": "curso-angular:build:production"
             },
             "development": {
-              "browserTarget": "argentina-programa-curso:build:development"
+              "browserTarget": "curso-angular:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -71,7 +71,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "argentina-programa-curso:build"
+            "browserTarget": "curso-angular:build"
           }
         },
         "test": {

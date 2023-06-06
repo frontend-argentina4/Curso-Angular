@@ -1,0 +1,11 @@
+.selected{
+  background-color: cadetblue;
+}
+th.mat-header-cell{
+  text-align: center;
+}
+
+.progress {
+  margin: auto;
+  margin-top: 90px;
+}

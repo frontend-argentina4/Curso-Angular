@@ -1,0 +1,34 @@
+<div style="text-align: center">
+
+  <!--<p>{{personForm.value | json}}</p-->
+  <!--<p>{{personForm.status}}</p>-->
+  <p>Editar la informacion de una persona</p>
+
+  <form [formGroup]="personForm" (ngSubmit)="saveData()" style="display: flex; flex-direction: column">
+    <label>
+      Nombre
+      <input type="text" formControlName="firstName">
+      <app-form-error [control]="personForm.controls.firstName"></app-form-error>
+    </label>
+    <br>
+
+    <label>
+      Apellido
+      <input type="text" formControlName="lastName">
+      <app-form-error [control]="personForm.controls.lastName"></app-form-error>
+    </label>
+
+    <br>
+    <label>
+      Edad
+      <input type="number" formControlName="age">
+
+      <app-form-error [control]="personForm.controls.age"></app-form-error>
+    </label>
+
+    <br>
+
+    <button (click)="goBack()" style="width: 220px; margin: auto;">Volver</button>
+    <button type="submit" [disabled]="personForm.invalid" style="width: 220px; margin: auto;">Guardar</button>
+  </form>
+</div>

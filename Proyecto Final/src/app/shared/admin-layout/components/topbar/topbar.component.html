@@ -1,0 +1,12 @@
+<mat-toolbar color="primary" style="justify-content: space-between;">
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" (click)="clickButton()">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <span>{{title}}</span>
+  <div *ngIf="authenticationService.isLoggedIn()" style="align-items: center;display: flex;">
+    <span>{{(authenticationService.loggedIn | async)?.username}}</span>
+    <button mat-icon-button (click)="logOut()" matTooltip="Cerrar sesión">
+      <mat-icon>logout</mat-icon>
+    </button>
+  </div>
+</mat-toolbar>

@@ -1,0 +1,9 @@
+<div *ngIf="control?.invalid && (control?.dirty || control?.touched)"
+     style="color: red">
+        <span *ngIf="control?.errors?.required">
+          Este campo es requerido
+        </span>
+  <span *ngIf="control?.errors?.max">
+          El numero ingresado supera el maximo
+        </span>
+</div>

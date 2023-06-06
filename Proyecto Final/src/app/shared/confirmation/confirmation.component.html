@@ -1,0 +1,7 @@
+<mat-dialog-content class="mat-typography">
+  Esta seguro que desea eliminar el elemento
+</mat-dialog-content>
+<mat-dialog-actions align="end">
+  <button mat-button mat-dialog-close>Cancelar</button>
+  <button mat-button (click)="dialogRef.close(true)" cdkFocusInitial>Eliminar</button>
+</mat-dialog-actions>

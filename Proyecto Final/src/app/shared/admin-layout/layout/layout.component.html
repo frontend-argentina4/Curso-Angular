@@ -1,0 +1,20 @@
+<div>
+  <app-topbar (openSideEmitter)="sideOpen = $event"></app-topbar>
+
+  <mat-drawer-container class="example-container" autosize>
+
+    <mat-drawer opened class="example-sidenav" mode="side" disableClose="true">
+<!--                [@openClose]="sideOpen ? 'open' : 'closed'">-->
+      <app-sidebar [isExpanded]="sideOpen"></app-sidebar>
+    </mat-drawer>
+
+    <div style="padding: 20px">
+      <div style="text-align: center">
+        <h1> Bienvenido</h1>
+      </div>
+
+      <router-outlet></router-outlet>
+    </div>
+
+  </mat-drawer-container>
+</div>

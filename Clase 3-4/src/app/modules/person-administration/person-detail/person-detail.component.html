@@ -1,0 +1,13 @@
+<div *ngIf="selectedPerson" class="persona-container" style="margin-top: 20px">
+  <h2>Editando la información de una persona</h2>
+
+  <label>Nombre:</label>
+  <input type="text" [(ngModel)]="selectedPerson.nombre">
+
+  <label>Apellido:</label>
+  <input type="text" [(ngModel)]="selectedPerson.apellido">
+
+</div>
+
+<button (click)="volverAtras()"> VOLVER</button>
+

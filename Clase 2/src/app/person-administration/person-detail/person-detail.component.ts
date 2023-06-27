@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import {Component, Input} from '@angular/core';
 import {Person} from "../../models/person";
 
 @Component({
@@ -8,6 +8,7 @@ import {Person} from "../../models/person";
 })
 export class PersonDetailComponent {
 
+  @Input()
   selectedPerson: Person | null = null;
 
 }

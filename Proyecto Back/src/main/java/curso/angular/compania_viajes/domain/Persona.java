@@ -6,10 +6,9 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
-import org.springframework.test.context.jdbc.Sql;
+
 
 @Entity
-@Sql("/data.sql")
 public class Persona {
 
     @Id

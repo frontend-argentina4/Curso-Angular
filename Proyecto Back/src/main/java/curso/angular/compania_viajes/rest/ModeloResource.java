@@ -2,16 +2,23 @@ package curso.angular.compania_viajes.rest;
 
 import curso.angular.compania_viajes.model.ModeloDTO;
 import curso.angular.compania_viajes.service.ModeloService;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@CrossOrigin()
 @RequestMapping(value = "/api/modelos", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ModeloResource {
 
@@ -27,27 +34,7 @@ public class ModeloResource {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ModeloDTO> getModelo(@PathVariable final Long id) {
+    public ResponseEntity<ModeloDTO> getModelo(@PathVariable(name = "id") final Long id) {
         return ResponseEntity.ok(modeloService.get(id));
     }
-
-    @PostMapping
-    public ResponseEntity<Long> createModelo(@RequestBody @Valid final ModeloDTO modeloDTO) {
-        final Long createdId = modeloService.create(modeloDTO);
-        return new ResponseEntity<>(createdId, HttpStatus.CREATED);
-    }
-
-    @PutMapping("/{id}")
-    public ResponseEntity<Void> updateModelo(@PathVariable final Long id,
-            @RequestBody @Valid final ModeloDTO modeloDTO) {
-        modeloService.update(id, modeloDTO);
-        return ResponseEntity.ok().build();
-    }
-
-    @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteModelo(@PathVariable final Long id) {
-        modeloService.delete(id);
-        return ResponseEntity.noContent().build();
-    }
-
 }

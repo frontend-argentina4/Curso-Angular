@@ -2,16 +2,23 @@ package curso.angular.compania_viajes.rest;
 
 import curso.angular.compania_viajes.model.ColectivosDTO;
 import curso.angular.compania_viajes.service.ColectivosService;
+import io.swagger.v3.oas.annotations.responses.ApiResponse;
 import jakarta.validation.Valid;
 import java.util.List;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 
 @RestController
-@CrossOrigin()
 @RequestMapping(value = "/api/colectivos", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ColectivosResource {
 
@@ -27,11 +34,12 @@ public class ColectivosResource {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<ColectivosDTO> getColectivos(@PathVariable final Long id) {
+    public ResponseEntity<ColectivosDTO> getColectivos(@PathVariable(name = "id") final Long id) {
         return ResponseEntity.ok(colectivosService.get(id));
     }
 
     @PostMapping
+    @ApiResponse(responseCode = "201")
     public ResponseEntity<Long> createColectivos(
             @RequestBody @Valid final ColectivosDTO colectivosDTO) {
         final Long createdId = colectivosService.create(colectivosDTO);
@@ -39,14 +47,15 @@ public class ColectivosResource {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Void> updateColectivos(@PathVariable final Long id,
+    public ResponseEntity<Void> updateColectivos(@PathVariable(name = "id") final Long id,
             @RequestBody @Valid final ColectivosDTO colectivosDTO) {
         colectivosService.update(id, colectivosDTO);
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> deleteColectivos(@PathVariable final Long id) {
+    @ApiResponse(responseCode = "204")
+    public ResponseEntity<Void> deleteColectivos(@PathVariable(name = "id") final Long id) {
         colectivosService.delete(id);
         return ResponseEntity.noContent().build();
     }

@@ -1,0 +1,13 @@
+<mat-nav-list>
+  <mat-list-item (click)="navegar('/person/list')">
+    <mat-icon mat-list-icon>person</mat-icon>
+    <h4 mat-line *ngIf="isExpanded">Personas</h4>
+  </mat-list-item>
+  <mat-list-item>
+    <a routerLink="/buses/list">
+      <mat-icon mat-list-icon>directions_bus</mat-icon>
+      <h4 mat-line *ngIf="isExpanded">Colectivos</h4>
+    </a>
+  </mat-list-item>
+</mat-nav-list>
+

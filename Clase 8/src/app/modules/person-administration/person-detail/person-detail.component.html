@@ -1,0 +1,73 @@
+
+<form [formGroup]="personForm" (ngSubmit)="guardarCambios()">
+
+  <mat-card class="persona-container" style="padding: 20px">
+
+    <div class="title">
+      <button type="button" class="go-back-button" mat-icon-button (click)="volverAtras()">
+        <mat-icon>arrow_back</mat-icon>
+      </button>
+
+      <h2>Editando la información de una persona</h2>
+    </div>
+
+    <mat-form-field class="person-input">
+      <mat-label>Nombre:</mat-label>
+    <!--  <input type="text" [(ngModel)]="selectedPerson.nombre">-->
+      <input matInput type="text" formControlName="name">
+      <div *ngIf="personForm.controls['name'].invalid &&
+     (personForm.controls['name'].dirty || personForm.controls['name'].touched)">
+        <mat-hint *ngIf="personForm.controls['name'].errors['required']"
+                  style="color: red">
+          Porfavor complete el campo, este requerido
+        </mat-hint>
+
+      </div>
+    </mat-form-field>
+
+
+
+    <mat-form-field class="person-input">
+      <mat-label>Apellido:</mat-label>
+      <input matInput type="text" formControlName="lastName">
+
+      <div *ngIf="personForm.controls['lastName'].invalid &&
+     (personForm.controls['lastName'].dirty || personForm.controls['lastName'].touched)">
+        <mat-hint *ngIf="personForm.controls['lastName'].errors['required']"
+                  style="color: red">
+          Porfavor complete el campo, este requerido
+        </mat-hint>
+
+      </div>
+    </mat-form-field>
+
+    <mat-form-field class="person-input">
+      <mat-label>Edad:</mat-label>
+      <input matInput type="number" formControlName="age">
+
+      <div *ngIf="personForm.controls['age'].invalid &&
+     (personForm.controls['age'].dirty || personForm.controls['age'].touched)">
+        <mat-hint *ngIf="personForm.controls['age'].errors['required']"
+                  style="color: red">
+          Porfavor complete el campo, este requerido
+        </mat-hint>
+
+        <mat-hint *ngIf="personForm.controls['age'].errors['min']"
+                  style="color: red">
+          La edad debe ser mayor o igual a 0 años
+        </mat-hint>
+
+        <mat-hint *ngIf="personForm.controls['age'].errors['max']"
+                  style="color: red">
+          La edad debe ser menor o igual a 101 años
+        </mat-hint>
+      </div>
+
+    </mat-form-field>
+
+    <button type="submit" mat-button [disabled]="personForm.invalid"> Guardar Cambios</button>
+
+  </mat-card>
+</form>
+
+

@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequestMapping(value = "/api/modelos", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ModeloResource {
 

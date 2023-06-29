@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.*;
 
 
 @RestController
-@CrossOrigin
+@CrossOrigin(origins = "*")
 @RequestMapping(value = "/api/colectivos", produces = MediaType.APPLICATION_JSON_VALUE)
 public class ColectivosResource {
 

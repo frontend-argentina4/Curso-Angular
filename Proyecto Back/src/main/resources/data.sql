@@ -80,3 +80,6 @@ insert into modelo values
 (1, 'Chevrolet', 'Colectivo 1'),
 (2, 'Chevrolet', 'Colectivo 2'),
 (3, 'Wolksvagen', 'Colectivo 3');
+
+insert into colectivos values (1, 25, 1, 'LSD 255', 1);
+insert into colectivos values (2, 100, 2, 'LSD 666', 2);

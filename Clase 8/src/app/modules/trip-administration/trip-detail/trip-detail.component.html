@@ -1,0 +1,126 @@
+<mat-card>
+
+  <mat-card-title style="padding: 20px">
+    Creacion/Edición de una persona
+  </mat-card-title>
+
+  <mat-card-content>
+    <form [formGroup]="tripForm" (ngSubmit)="guardarCambios()">
+
+      <div style="display:flex; gap: 15px; margin-bottom: 15px" >
+        <mat-form-field>
+          <mat-label>Origen:</mat-label>
+          <input matInput type="text" formControlName="origen">
+
+          <div *ngIf="tripForm.controls['origen'].invalid &&
+       (tripForm.controls['origen'].dirty || tripForm.controls['origen'].touched)">
+            <mat-hint *ngIf="tripForm.controls['origen'].errors['required']"
+                      style="color: red">
+              complete el campo
+            </mat-hint>
+
+          </div>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Destino:</mat-label>
+          <input matInput type="text" formControlName="destino">
+
+          <div *ngIf="tripForm.controls['destino'].invalid &&
+       (tripForm.controls['destino'].dirty || tripForm.controls['destino'].touched)">
+            <mat-hint *ngIf="tripForm.controls['destino'].errors['required']"
+                      style="color: red">
+              complete el campo
+            </mat-hint>
+
+          </div>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Fecha de Salida:</mat-label>
+
+          <input matInput formControlName="fechaSalida"
+                 [matDatepicker]="pickerSalida">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="pickerSalida"></mat-datepicker-toggle>
+          <mat-datepicker #pickerSalida></mat-datepicker>
+
+          <div *ngIf="tripForm.controls['fechaSalida'].invalid &&
+       (tripForm.controls['fechaSalida'].dirty || tripForm.controls['fechaSalida'].touched)">
+            <mat-hint *ngIf="tripForm.controls['fechaSalida'].errors['required']"
+                      style="color: red">
+              complete el campo
+            </mat-hint>
+
+          </div>
+        </mat-form-field>
+
+
+        <mat-form-field>
+          <mat-label>Fecha de Llegada:</mat-label>
+
+          <input matInput formControlName="fechaLlegada"
+                 [matDatepicker]="pickerLlegada">
+          <mat-hint>MM/DD/YYYY</mat-hint>
+          <mat-datepicker-toggle matIconSuffix [for]="pickerLlegada"></mat-datepicker-toggle>
+          <mat-datepicker #pickerLlegada></mat-datepicker>
+
+
+          <div *ngIf="tripForm.controls['fechaLlegada'].invalid &&
+       (tripForm.controls['fechaLlegada'].dirty || tripForm.controls['fechaLlegada'].touched)">
+            <mat-hint *ngIf="tripForm.controls['fechaLlegada'].errors['required']"
+                      style="color: red">
+              complete el campo
+            </mat-hint>
+
+          </div>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Colectivo:</mat-label>
+
+          <mat-select formControlName="colectivo">
+            <mat-option disabled> -- </mat-option>
+            <mat-option *ngFor="let bus of busList" [value]="bus.id">
+              {{bus.patente}} - {{bus.cantidadAsientos}} - {{bus.modelo.marca}}
+            </mat-option>
+          </mat-select>
+
+          <div *ngIf="tripForm.controls['colectivo'].invalid &&
+       (tripForm.controls['colectivo'].dirty || tripForm.controls['colectivo'].touched)">
+            <mat-hint *ngIf="tripForm.controls['colectivo'].errors['required']"
+                      style="color: red">
+              complete el campo
+            </mat-hint>
+
+          </div>
+        </mat-form-field>
+
+        <mat-form-field>
+          <mat-label>Pasajeros:</mat-label>
+
+          <mat-select formControlName="pasajeros" multiple>
+            <mat-option *ngFor="let person of personList" [value]="person.id">
+              {{person.nombre}} {{person.apellido}}
+            </mat-option>
+          </mat-select>
+
+          <div *ngIf="tripForm.controls['pasajeros'].invalid &&
+       (tripForm.controls['pasajeros'].dirty || tripForm.controls['pasajeros'].touched)">
+            <mat-hint *ngIf="tripForm.controls['pasajeros'].errors['required']"
+                      style="color: red">
+              complete el campo
+            </mat-hint>
+
+          </div>
+        </mat-form-field>
+      </div>
+
+      <button type="submit" style="float: right" mat-button [disabled]="tripForm.invalid">
+        Guardar
+      </button>
+
+    </form>
+  </mat-card-content>
+
+</mat-card>

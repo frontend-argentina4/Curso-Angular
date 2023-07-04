@@ -1,0 +1,20 @@
+<app-admin-topbar (expandioBoton)="onExpandedPress($event)"></app-admin-topbar>
+
+<!-- Este es el contenedor que muestra la barra lateral-->
+<mat-drawer-container class="example-container" autosize style="height: 90%">
+
+  <!-- Por defecto comienza abierto-->
+  <mat-drawer opened class="example-sidenav" mode="side" disableClose="true"
+              style="width: {{isExpanded ? 250 : 70}}px">
+    <app-admin-sidebar [isExpanded]="isExpanded"></app-admin-sidebar>
+  </mat-drawer>
+
+  <div style="padding: 20px">
+    <div style="text-align: center">
+      <h1> Bienvenido</h1>
+    </div>
+
+    <router-outlet></router-outlet>
+  </div>
+
+</mat-drawer-container>
